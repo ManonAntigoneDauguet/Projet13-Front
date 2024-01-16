@@ -6,6 +6,7 @@ import './index.css'
 import Header from './layouts/header'
 import Home from './pages/home'
 import SignIn from './pages/signIn'
+import Footer from './layouts/footer'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -17,6 +18,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<SignIn />}></Route>
       </Routes>
+      <Footer />
     </Router>
 
   </React.StrictMode>
