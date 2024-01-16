@@ -3,15 +3,19 @@
     padding-bottom: 11.5rem;
     flex: 1;
 }
-  
+
 .content {
     box-sizing: border-box;
     background-color: white;
     width: 300px;
     margin: 0 auto;
     padding: 2rem;
-  }
-  
+}
+
+.content a {
+    text-decoration-color: white;
+}
+
 .sign_in_icon {
     font-size: 5rem;
 }

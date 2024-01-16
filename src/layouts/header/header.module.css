@@ -14,9 +14,15 @@ nav a.router-link-exact-active {
     color: #42b983;
 }
 
+.signInContainer {
+    margin-right: 0.5rem;    
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 .navItem {
     text-decoration: none;
-    margin-right: 0.5rem;
     display: flex;
     align-items: center;
     gap: 5px;
