@@ -9,7 +9,7 @@ function Header() {
             <nav>
                 <Link to="/" className={style.logo}>
                     <img
-                        className={style.logoImg}
+                        className={style.logo_image}
                         src={argentBankLogo}
                         alt="Argent Bank Logo"
                     />
