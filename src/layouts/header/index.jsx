@@ -1,6 +1,8 @@
 import style from "./header.module.css"
 import argentBankLogo from "../../assets/argentBankLogo.png"
+import React from "react"
 import { Link } from 'react-router-dom'
+import { useState } from "react"
 
 
 /**
@@ -8,6 +10,9 @@ import { Link } from 'react-router-dom'
  * @returns { HTMLElement }
  */
 function Header() {
+    const [connected, updateConnected] = useState(true)
+    const [userName, updateUserName] = useState("Tony")
+
     return (
         <header>
             <nav>
@@ -19,11 +24,27 @@ function Header() {
                     />
                     <h1 className="sr-only">Argent Bank</h1>
                 </Link>
-                <div>
-                    <Link to="/sign-in" className={style.navItem} href="./sign-in.html">
-                        <i className="fa fa-user-circle"></i>
-                        Sign In
-                    </Link>
+                <div className={style.signInContainer}>
+                    {
+                        connected ?
+                        <React.Fragment>
+                            <Link to="/user" className={style.navItem}>
+                                <i className="fa fa-user-circle"></i>
+                                {userName}
+                            </Link>                            
+                            <Link to="/" className={style.navItem}>
+                                <i class="fa fa-sign-out"></i>
+                                Sign Out
+                            </Link> 
+                        </React.Fragment>
+                        : 
+                        <Link to="/sign-in" className={style.navItem}>
+                            <i className="fa fa-user-circle"></i>
+                            Sign In
+                        </Link>
+
+                    }
+
                 </div>
             </nav>
         </header>

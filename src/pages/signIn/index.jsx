@@ -1,4 +1,5 @@
 import style from "./signIn.module.css"
+import { Link } from 'react-router-dom'
 
 
 /**
@@ -24,7 +25,9 @@ function SignIn() {
                     <input type="checkbox" id="remember-me" />
                     <label for="remember-me">Remember me</label>
                 </div>
-                <button class={style.button}>Sign In</button>
+                <Link to="/user">
+                    <button class={style.button}>Sign In</button>                    
+                </Link>
                 </form>
             </section>
         </main>
