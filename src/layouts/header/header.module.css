@@ -17,6 +17,9 @@ nav a.router-link-exact-active {
 .navItem {
     text-decoration: none;
     margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .navItem:hover {
