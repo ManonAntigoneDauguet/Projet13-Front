@@ -3,6 +3,10 @@ import argentBankLogo from "../../assets/argentBankLogo.png"
 import { Link } from 'react-router-dom'
 
 
+/**
+ * Return the application's header
+ * @returns { HTMLElement }
+ */
 function Header() {
     return (
         <header>
@@ -13,7 +17,7 @@ function Header() {
                         src={argentBankLogo}
                         alt="Argent Bank Logo"
                     />
-                    <h1 className={style.srOnly}>Argent Bank</h1>
+                    <h1 className="sr-only">Argent Bank</h1>
                 </Link>
                 <div>
                     <Link to="/sign-in" className={style.navItem} href="./sign-in.html">

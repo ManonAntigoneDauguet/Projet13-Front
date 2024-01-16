@@ -1,6 +1,10 @@
 import style from "./footer.module.css"
 
 
+/**
+ * Return the application's footer
+ * @returns { HTMLElement }
+ */
 function Footer() {
     return (
         <footer>
