@@ -1,4 +1,5 @@
 import style from "./account.module.css"
+import MainButton from "../mainButton"
 
 
 /**
@@ -17,9 +18,14 @@ function Account({ title, amount, description }) {
                 <p class={style.description}>{description}</p>
             </div>
             <div class={`${style.wrapper} ${style.cta}`}>
-                <button class={style.button}>View transactions</button>
+                <MainButton
+                    text="View transactions"
+                    navLink="/transactions"
+                    isUnderlined={false}
+                    isLittleVersion={false}
+                />
             </div>
-        </article>        
+        </article>
     )
 }
 
