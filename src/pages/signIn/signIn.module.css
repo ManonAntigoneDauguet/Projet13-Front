@@ -12,10 +12,6 @@
     padding: 2rem;
 }
 
-.content a {
-    text-decoration-color: white;
-}
-
 .sign_in_icon {
     font-size: 5rem;
 }
@@ -44,17 +40,4 @@
 .input_wrapper input {
     padding: 5px;
     font-size: 1.2rem;
-}
-
-.button {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: 1rem;
-    border-color: #00bc77;
-    background-color: #00bc77;
-    color: #fff;
-    cursor: pointer;
 }

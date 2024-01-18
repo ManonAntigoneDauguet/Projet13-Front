@@ -33,7 +33,7 @@ function Header() {
                                 {userName}
                             </Link>                            
                             <Link to="/" className={style.navItem}>
-                                <i class="fa fa-sign-out"></i>
+                                <i className="fa fa-sign-out"></i>
                                 Sign Out
                             </Link> 
                         </React.Fragment>
