@@ -1,9 +1,9 @@
 .main {
     cursor: pointer;
     font-weight: bold;
-    border-color: #00bc77;
-    background-color: #00bc77;
-    color: #fff;
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .big {
@@ -20,11 +20,6 @@
     font-size: 0.8rem;
 }
 
-.underlined {
-    text-decoration: underline;
-    text-decoration-color: white;
-}
-
-.notUnderlined {
+.navLink {
     text-decoration: none;
 }

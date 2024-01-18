@@ -67,7 +67,7 @@
   
 .feature_icon {
     width: 100px;
-    border: 10px solid #00bc77;
+    border: 10px solid var(--primary-color);
     border-radius: 50%;
     padding: 1rem;
 }
@@ -78,7 +78,7 @@
 }
   
 .feature_item_title {
-    color: #222;
+    color: var(--secondary-color);
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 0.5rem;

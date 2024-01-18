@@ -1,9 +1,17 @@
+:root {
+  --primary-color : #00bc77;
+  --secondary-color: #2c3e50;
+  --dark-bg-color: #12002b;
+  --light-bg-color: rgb(227, 234, 241);
+  --border-color: #ccc;
+}
+
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--secondary-color);
 }
 
 body {
@@ -14,7 +22,11 @@ body {
 }
 
 .bg-dark {
-  background-color: #12002b;
+  background-color: var(--dark-bg-color);
+}
+
+.bg-light {
+  background-color: var(--light-bg-color);
 }
 
 .sr-only {
