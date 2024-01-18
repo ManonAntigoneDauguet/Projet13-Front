@@ -10,7 +10,7 @@ import { useState } from "react"
  * @returns { HTMLElement }
  */
 function Header() {
-    const [connected, updateConnected] = useState(true)
+    const [connected, updateConnected] = useState(false)
     const [userName, updateUserName] = useState("Tony")
 
     return (

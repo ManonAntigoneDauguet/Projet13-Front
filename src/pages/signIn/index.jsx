@@ -1,5 +1,7 @@
 import style from "./signIn.module.css"
 import MainButton from "../../components/mainButton"
+import { useEffect, useState } from "react"
+import { getUser } from "../../services/callAPI.service"
 
 
 /**
@@ -7,6 +9,31 @@ import MainButton from "../../components/mainButton"
  * @returns { HTMLElement }
  */
 function SignIn() {
+    const [isSending, updateIsSending] = useState(false)
+    const [isError, updateIsError] = useState(false)
+    const [user, updateUser] = useState()
+
+    const sendLoginRequest = () => {
+        updateIsSending(true)
+    }
+
+    useEffect(() => {
+        if (isSending && user === undefined) {
+            const getInformations = async () => {
+                try {
+                    updateUser(await getUser())
+                } catch {
+                    updateIsError(true)
+                    updateIsSending(false)
+                }
+            }
+            getInformations()
+        }
+        else if (user !== undefined) {
+            console.log(user)
+        }
+    }, [isSending, user])
+
     return (
         <main className={`${style.main} bg-dark`}>
             <section className={style.content}>
@@ -28,9 +55,9 @@ function SignIn() {
                     <MainButton
                         text="Sign In"
                         navLink="/user"
-                        isUnderlined={true}
                         isLittleVersion={false}
                     />
+                    <input type="button" onClick={sendLoginRequest} />
                 </form>
             </section>
         </main>
