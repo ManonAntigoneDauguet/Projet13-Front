@@ -8,6 +8,7 @@ import Home from './pages/home'
 import SignIn from './pages/signIn'
 import Footer from './layouts/footer'
 import User from './pages/user'
+import Transactions from './pages/transactions'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -19,6 +20,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<SignIn />}></Route>
         <Route path="/user" element={<User />}></Route>
+        <Route path="/transactions/:accountId" element={<Transactions />}></Route>
       </Routes>
       <Footer />
     </Router>

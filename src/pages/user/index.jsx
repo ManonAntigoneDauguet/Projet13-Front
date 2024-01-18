@@ -6,19 +6,19 @@ import style from "./user.module.css"
 const accountContent = [
     {
         "id": 1,
-        "title": "Argent Bank Checking (x8349)",
+        "title": "Checking (x8349)",
         "amount": "$2,082.79",
         "description": "Available Balance"
     },
     {
         "id": 2,
-        "title": "Argent Bank Savings (x6712)",
+        "title": "Savings (x6712)",
         "amount": "$10,928.42",
         "description": "Available Balance"
     },
     {
         "id": 3,
-        "title": "Argent Bank Credit Card (x8349)",
+        "title": "Credit Card (x8349)",
         "amount": "$184.30",
         "description": "Current Balance"
     }
@@ -42,9 +42,14 @@ function User() {
             </section>
 
             <section className={style.accountsContainer}>
-                <h2 class="sr-only">Accounts</h2>
+                <h2 className="sr-only">Accounts</h2>
                 {accountContent.map(({ id, title, amount, description }) => (
-                    <Account key={id} title={title} amount={amount} description={description} />
+                    <Account
+                        key={id}
+                        title={title}
+                        amount={amount}
+                        description={description}
+                    />
                 ))}
             </section>
         </main>
