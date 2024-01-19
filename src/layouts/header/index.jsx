@@ -42,9 +42,7 @@ function Header() {
                             <i className="fa fa-user-circle"></i>
                             Sign In
                         </Link>
-
                     }
-
                 </div>
             </nav>
         </header>

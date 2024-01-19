@@ -2,6 +2,8 @@ import style from "./signIn.module.css"
 import MainButton from "../../components/mainButton"
 import { useEffect, useState } from "react"
 import { getUser } from "../../services/callAPI.service"
+import { useDispatch, useSelector } from "react-redux"
+import { getData } from "../../features/login/loginSlice"
 
 
 /**
@@ -12,6 +14,13 @@ function SignIn() {
     const [isSending, updateIsSending] = useState(false)
     const [isError, updateIsError] = useState(false)
     const [user, updateUser] = useState()
+
+    const dispatch = useDispatch()
+    const data = useSelector((state) => state.login.user)
+    const sendData = (user) => {
+        console.log("envoie au store")
+        dispatch(getData(user))
+    }
 
     const sendLoginRequest = () => {
         updateIsSending(true)
@@ -31,6 +40,8 @@ function SignIn() {
         }
         else if (user !== undefined) {
             console.log(user)
+            sendData(user.body)
+            console.log(data)
         }
     }, [isSending, user])
 
