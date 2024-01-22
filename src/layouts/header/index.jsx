@@ -3,6 +3,7 @@ import argentBankLogo from "../../assets/argentBankLogo.png"
 import React from "react"
 import { Link } from 'react-router-dom'
 import { useState } from "react"
+import { useSelector } from "react-redux"
 
 
 /**
@@ -10,8 +11,8 @@ import { useState } from "react"
  * @returns { HTMLElement }
  */
 function Header() {
-    const [connected, updateConnected] = useState(false)
     const [userName, updateUserName] = useState("Tony")
+    const isConnected = useSelector((state) => state.login.isConnected)
 
     return (
         <header>
@@ -26,7 +27,7 @@ function Header() {
                 </Link>
                 <div className={style.signInContainer}>
                     {
-                        connected ?
+                        isConnected ?
                         <React.Fragment>
                             <Link to="/user" className={style.navItem}>
                                 <i className="fa fa-user-circle"></i>
