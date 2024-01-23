@@ -1,5 +1,5 @@
 :root {
-  --primary-color : #00bc77;
+  --primary-color: #00bc77;
   --secondary-color: #2c3e50;
   --dark-bg-color: #12002b;
   --light-bg-color: rgb(227, 234, 241);
@@ -27,6 +27,10 @@ body {
 
 .bg-light {
   background-color: var(--light-bg-color);
+}
+
+.loading {
+  cursor: wait;
 }
 
 .sr-only {

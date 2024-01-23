@@ -20,23 +20,23 @@
 /***************** FORM **************/
 .input_remember {
     display: flex;
-  }
-  
+}
+
 .input_remember label {
     margin-left: 0.25rem;
 }
-  
+
 .input_wrapper {
     display: flex;
     flex-direction: column;
     text-align: left;
     margin-bottom: 1rem;
 }
-  
+
 .input_wrapper label {
     font-weight: bold;
 }
-  
+
 .input_wrapper input {
     padding: 5px;
     font-size: 1.2rem;
@@ -45,4 +45,12 @@
 .content button {
     text-decoration: underline;
     text-decoration-color: white;
+}
+
+.inputErrorMessage {
+    font-size: 0.8em;
+    font-weight: normal;
+    color: red;
+    padding: 5px;
+    display: block;
 }
