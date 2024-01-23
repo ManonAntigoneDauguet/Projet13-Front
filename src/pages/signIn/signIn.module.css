@@ -1,0 +1,56 @@
+.main {
+    padding-top: 3rem;
+    padding-bottom: 11.5rem;
+    flex: 1;
+}
+
+.content {
+    box-sizing: border-box;
+    background-color: white;
+    width: 300px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.sign_in_icon {
+    font-size: 5rem;
+}
+
+
+/***************** FORM **************/
+.input_remember {
+    display: flex;
+}
+
+.input_remember label {
+    margin-left: 0.25rem;
+}
+
+.input_wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.input_wrapper label {
+    font-weight: bold;
+}
+
+.input_wrapper input {
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+.content button {
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+.inputErrorMessage {
+    font-size: 0.8em;
+    font-weight: normal;
+    color: red;
+    padding: 5px;
+    display: block;
+}

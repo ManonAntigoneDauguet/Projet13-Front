@@ -1,0 +1,49 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+nav a {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+nav a.router-link-exact-active {
+    color: #42b983;
+}
+
+.signInContainer {
+    margin-right: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.navItem {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.navItem:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo_image {
+    max-width: 100%;
+    width: 200px;
+}

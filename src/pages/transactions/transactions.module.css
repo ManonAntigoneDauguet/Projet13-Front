@@ -1,0 +1,26 @@
+.main {
+    border: 2px solid var(--border-color);
+}
+
+
+/***************** WELCOME SECTION **************/
+.welcome {
+    padding: 0.9em;
+}
+
+.welcome h1 {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.amount {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 0.9rem;
+}
+
+
+/***************** TRANSACTIONS SECTION **************/
