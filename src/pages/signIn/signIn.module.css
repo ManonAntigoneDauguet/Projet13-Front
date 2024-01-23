@@ -46,3 +46,11 @@
     text-decoration: underline;
     text-decoration-color: white;
 }
+
+.inputErrorMessage {
+    font-size: 0.8em;
+    font-weight: normal;
+    color: red;
+    padding: 5px;
+    display: block;
+}

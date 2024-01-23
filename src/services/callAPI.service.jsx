@@ -8,6 +8,8 @@ async function getToken(mail, password) {
                 "password": password
                 // "email": "tony@stark.com",
                 // "password": "password123"
+                // "email": "steve@rogers.com",
+                // "password": "password456"
             })
         })
         const token = await response.json()

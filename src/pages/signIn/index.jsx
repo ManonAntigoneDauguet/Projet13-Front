@@ -1,11 +1,11 @@
 import style from "./signIn.module.css"
 import MainButton from "../../components/mainButton"
 import { useEffect, useRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { getUser, getToken } from "../../services/callAPI.service"
 import { useDispatch, useSelector } from "react-redux"
-import { getData, postToken } from "../../features/login/loginSlice"
+import { getData, postToken, signOut } from "../../features/login/loginSlice"
 import login from "../../features/login/login.service"
-import { useNavigate } from "react-router-dom"
 
 
 /**
@@ -15,16 +15,30 @@ import { useNavigate } from "react-router-dom"
 function SignIn() {
     const mailInput = useRef(null)
     const passwordInput = useRef(null)
-    const navigate = useNavigate()
+    const [mailInput_error, updateMailInput_error] = useState(false)
+    const [passwordInput_error, updatePasswordInput_error] = useState(false)
     const [isSending, updateIsSending] = useState(false)
     const [user, updateUser] = useState()
 
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const data = useSelector((state) => state.login.user)
     console.log(data)
 
+
     const handleSumbit = () => {
-        // add submit conditions 
+        // add submit conditions before sending
+        let emailRegExp = new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")
+        if (mailInput.current.value.trim() === "" || !emailRegExp.test(mailInput.current.value)) {
+            updateMailInput_error("Veillez entrer un email")
+        } else {
+            updateMailInput_error(false)
+        }
+        if (passwordInput.current.value.trim() === "") {
+            updatePasswordInput_error("Veillez entrer un mot de passe")
+        } else {
+            updatePasswordInput_error(false)
+        }
         updateIsSending(true)
     }
 
@@ -32,7 +46,7 @@ function SignIn() {
         if (isSending && user === undefined) {
             const getInformations = async () => {
                 const token = await getToken(
-                    mailInput.current.value,
+                    mailInput.current.value.trim(),
                     passwordInput.current.value,
                 )
                 dispatch(postToken(token))
@@ -60,6 +74,9 @@ function SignIn() {
                 <form>
                     <div className={style.input_wrapper}>
                         <label htmlFor="username">Username</label>
+                        {mailInput_error !== false &&
+                            <span className={style.inputErrorMessage}>{mailInput_error}</span>                     
+                        }
                         <input
                             type="text"
                             id="username"
@@ -68,6 +85,9 @@ function SignIn() {
                     </div>
                     <div className={style.input_wrapper}>
                         <label htmlFor="password">Password</label>
+                        {passwordInput_error !== false &&
+                            <span className={style.inputErrorMessage}>{passwordInput_error}</span>                    
+                        }
                         <input
                             type="password"
                             id="password"

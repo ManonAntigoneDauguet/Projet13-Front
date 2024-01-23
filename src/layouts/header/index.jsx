@@ -1,9 +1,11 @@
 import style from "./header.module.css"
 import argentBankLogo from "../../assets/argentBankLogo.png"
+import ConfirmationModale from "../../components/confirmationModal"
 import React from "react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { signOut } from "../../features/login/loginSlice"
 
 
 /**
@@ -13,6 +15,14 @@ import { useSelector } from "react-redux"
 function Header() {
     const [userName, updateUserName] = useState("Tony")
     const isConnected = useSelector((state) => state.login.isConnected)
+    const [isModalVisible, updateIsModalVisible] = useState(false)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+        dispatch(signOut())
+        navigate("/")
+    }
 
     return (
         <header>
@@ -27,25 +37,36 @@ function Header() {
                 </Link>
                 <div className={style.signInContainer}>
                     {
-                        isConnected ?
-                        <React.Fragment>
-                            <Link to="/user" className={style.navItem}>
+                        isConnected?.isConnected ?
+                            <React.Fragment>
+                                <Link to="/user" className={style.navItem}>
+                                    <i className="fa fa-user-circle"></i>
+                                    {userName}
+                                </Link>
+                                <button
+                                    type="button"
+                                    to="/"
+                                    className={style.navItem}
+                                    onClick={() => updateIsModalVisible(true)}>
+                                    <i className="fa fa-sign-out"></i>
+                                    Sign Out
+                                </button>
+                            </React.Fragment>
+                            :
+                            <Link to="/sign-in" className={style.navItem}>
                                 <i className="fa fa-user-circle"></i>
-                                {userName}
-                            </Link>                            
-                            <Link to="/" className={style.navItem}>
-                                <i className="fa fa-sign-out"></i>
-                                Sign Out
-                            </Link> 
-                        </React.Fragment>
-                        : 
-                        <Link to="/sign-in" className={style.navItem}>
-                            <i className="fa fa-user-circle"></i>
-                            Sign In
-                        </Link>
+                                Sign In
+                            </Link>
                     }
                 </div>
             </nav>
+            {isModalVisible &&
+                <ConfirmationModale
+                    methodOn={handleClick}
+                    methodOff={() => updateIsModalVisible(false)}
+                    text="Souhaitez-vous vraiment vous déconnecter ?"
+                />
+            }
         </header>
     )
 }

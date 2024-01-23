@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getUser } from "../../services/callAPI.service"
 
 
 export const loginSlice = createSlice({
@@ -13,14 +12,19 @@ export const loginSlice = createSlice({
         getData: (state, action) => {
             const user = { ...state, user: action.payload }
             const isConnected = { ...state, isConnected: true }
-            return {user, isConnected}
+            return { user, isConnected }
         },
         postToken: (state, action) => {
             const token = { ...state, token: action.payload }
-            return {token}
+            return { token }
+        },
+        signOut: (state, action) => {
+            const user = undefined
+            const isConnected = { ...state, isConnected: false }
+            return { user, isConnected }
         }
     }
 })
 
-export const { getData, postToken } = loginSlice.actions
+export const { getData, postToken, signOut } = loginSlice.actions
 export default loginSlice.reducer
