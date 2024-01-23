@@ -9,22 +9,23 @@ export const loginSlice = createSlice({
         user: {}
     },
     reducers: {
-        getData: (state, action) => {
-            const user = { ...state, user: action.payload }
-            const isConnected = { ...state, isConnected: true }
-            return { user, isConnected }
+        postData: (state, action) => {
+            const user = action.payload
+            const isConnected = true
+            const token = state.token
+            return { user, isConnected, token }
         },
         postToken: (state, action) => {
-            const token = { ...state, token: action.payload }
+            const token = action.payload
             return { token }
         },
         signOut: (state, action) => {
             const user = undefined
-            const isConnected = { ...state, isConnected: false }
+            const isConnected = false
             return { user, isConnected }
         }
     }
 })
 
-export const { getData, postToken, signOut } = loginSlice.actions
+export const { postData, postToken, signOut } = loginSlice.actions
 export default loginSlice.reducer

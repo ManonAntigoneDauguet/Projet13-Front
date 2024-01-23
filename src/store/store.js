@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
-import { loginSlice } from "./features/login/loginSlice"
+import { loginSlice } from "./loginSlice"
 
 let state = {
   login: ""

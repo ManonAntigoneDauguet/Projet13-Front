@@ -3,9 +3,8 @@ import MainButton from "../../components/mainButton"
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getUser, getToken } from "../../services/callAPI.service"
-import { useDispatch, useSelector } from "react-redux"
-import { getData, postToken, signOut } from "../../features/login/loginSlice"
-import login from "../../features/login/login.service"
+import { useDispatch } from "react-redux"
+import { postData, postToken } from "../../store/loginSlice"
 
 
 /**
@@ -19,15 +18,12 @@ function SignIn() {
     const [passwordInput_error, updatePasswordInput_error] = useState(false)
     const [isSending, updateIsSending] = useState(false)
     const [user, updateUser] = useState()
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const data = useSelector((state) => state.login.user)
-    console.log(data)
 
 
+    // add submit conditions before sending
     const handleSumbit = () => {
-        // add submit conditions before sending
         let emailRegExp = new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")
         if (mailInput.current.value.trim() === "" || !emailRegExp.test(mailInput.current.value)) {
             updateMailInput_error("Veillez entrer un email")
@@ -42,6 +38,8 @@ function SignIn() {
         updateIsSending(true)
     }
 
+
+    // try to login and update the store
     useEffect(() => {
         if (isSending && user === undefined) {
             const getInformations = async () => {
@@ -59,11 +57,12 @@ function SignIn() {
             getInformations()
         }
         else if (user !== undefined) {
-            dispatch(getData(user))
+            dispatch(postData(user))
             navigate("/user")
         }
         updateIsSending(false)
     }, [dispatch, isSending, navigate, user])
+
 
     return (
         <main className={`${style.main} bg-dark`}>

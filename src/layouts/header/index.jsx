@@ -5,7 +5,7 @@ import React from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { signOut } from "../../features/login/loginSlice"
+import { signOut } from "../../store/loginSlice"
 
 
 /**
@@ -13,8 +13,7 @@ import { signOut } from "../../features/login/loginSlice"
  * @returns { HTMLElement }
  */
 function Header() {
-    const [userName, updateUserName] = useState("Tony")
-    const isConnected = useSelector((state) => state.login.isConnected)
+    const state = useSelector((state) => state.login)
     const [isModalVisible, updateIsModalVisible] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -37,11 +36,11 @@ function Header() {
                 </Link>
                 <div className={style.signInContainer}>
                     {
-                        isConnected?.isConnected ?
+                        state.isConnected ?
                             <React.Fragment>
                                 <Link to="/user" className={style.navItem}>
                                     <i className="fa fa-user-circle"></i>
-                                    {userName}
+                                    {state.user?.firstName}
                                 </Link>
                                 <button
                                     type="button"

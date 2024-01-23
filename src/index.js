@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals'
 // redux
 import { Provider } from "react-redux"
-import store from './store'
+import store from './store/store'
 // style
 import './index.css'
 // layouts
@@ -15,7 +15,6 @@ import Home from './pages/home'
 import SignIn from './pages/signIn'
 import User from './pages/user'
 import Transactions from './pages/transactions'
-import EditUser from './pages/editUser'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -29,7 +28,6 @@ root.render(
           <Route path="/sign-in" element={<SignIn />}></Route>
           <Route path="/user" element={<User />}></Route>
           <Route path="/transactions/:accountId" element={<Transactions />}></Route>
-          <Route path="/edit-user" element={<EditUser />}></Route>
         </Routes>
         <Footer />
       </Router>
