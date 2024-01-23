@@ -71,19 +71,19 @@
 .save_button {
     text-align: right;
     grid-row: 2 / 3;
-    grid-column: 1 / 2;   
+    grid-column: 1 / 2;
 }
 
 .cancel_button {
     text-align: left;
     grid-row: 2 / 3;
-    grid-column: 2 / 3; 
+    grid-column: 2 / 3;
 }
 
 
 /***************** ACCOUNTS SECTION **************/
 .accountsContainer {
-    width: 80%;  
+    width: 80%;
     margin: 0 auto;
 }
 

@@ -1,11 +1,12 @@
 import style from "./header.module.css"
-import argentBankLogo from "../../assets/argentBankLogo.png"
-import ConfirmationModale from "../../components/confirmationModal"
-import React from "react"
+import React, { useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from "react"
+// redux
 import { useDispatch, useSelector } from "react-redux"
 import { signOut } from "../../store/loginSlice"
+// assets and components
+import argentBankLogo from "../../assets/argentBankLogo.png"
+import ConfirmationModale from "../../components/confirmationModal"
 
 
 /**
@@ -19,6 +20,7 @@ function Header() {
     const navigate = useNavigate()
 
     const handleClick = () => {
+        // disconnect the user
         dispatch(signOut())
         navigate("/")
     }

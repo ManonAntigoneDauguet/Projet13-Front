@@ -1,22 +1,14 @@
 async function getToken(mail, password) {
-    try {
-        const response = await fetch(`http://localhost:3001/api/v1/user/login`, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                "email": mail,
-                "password": password
-                // "email": "tony@stark.com",
-                // "password": "password123"
-                // "email": "steve@rogers.com",
-                // "password": "password456"
-            })
+    const response = await fetch(`http://localhost:3001/api/v1/user/login`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            "email": mail,
+            "password": password
         })
-        const token = await response.json()
-        return token.body.token
-    } catch {
-        return null
-    }
+    })
+    const token = await response.json()
+    return token.body.token
 }
 
 async function getUser(token) {
@@ -35,7 +27,6 @@ async function getUser(token) {
         return null
     }
 }
-
 
 async function editUser(token, firstName, lastName) {
     try {

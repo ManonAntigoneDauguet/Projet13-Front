@@ -1,12 +1,14 @@
-import Account from "../../components/account"
-import MainButton from "../../components/mainButton"
 import style from "./user.module.css"
 import data from "../../mockedData/accountsData.json"
-import { useSelector, useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { useEffect, useRef, useState } from "react"
-import { editUser } from "../../services/callAPI.service"
+import { useNavigate } from "react-router-dom"
+// redux and API
+import { useSelector, useDispatch } from "react-redux"
 import { postData } from "../../store/loginSlice"
+import { editUser } from "../../services/callAPI.service"
+// components
+import Account from "../../components/account"
+import MainButton from "../../components/mainButton"
 
 
 const accountContent = data.accountsContent
@@ -20,22 +22,29 @@ function User() {
     const lastNameInput = useRef(null)
     const [editionMode, changeEditionMode] = useState(false)
     const [isSending, updateIsSending] = useState(false)
-    const isConnected = useSelector((state) => state.login.isConnected)
     const state = useSelector((state) => state.login)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    
+    useEffect(() => {
+        // redirect the disconnected user to the login page
+        if (!state.isConnected) {
+            navigate("/sign-in")
+        } else {
+            document.title = `Argent Bank - ${state.user?.firstName} ${state.user?.lastName}`
+        }
+    })
 
-    // add submit conditions before sending
     const handleSumbit = () => {
+        // add submit conditions before sending
         updateIsSending(true)
     }
 
-
-    // edit the user's informations
     useEffect(() => {
+        // edit the user's informations
         if (isSending) {
-            const changeInformations = async() => {
+            const changeInformations = async () => {
                 const test = await editUser(
                     state.token,
                     firstNameInput.current.value.trim(),
@@ -50,19 +59,13 @@ function User() {
     }, [dispatch, isSending, state])
 
 
-    // redirect the user to the login page
-    useEffect(() => {
-        if (!isConnected) {
-            navigate("/sign-in")
-        }
-    })
-
-
-    if (isConnected) {
+    if (state.isConnected) {
         return (
-            <main className={editionMode ?
-                `${style.main__editMode} bg-light` : `${style.main} bg-dark`
-            }>
+            <main className={[
+                editionMode ? `${style.main__editMode} bg-light` : `${style.main} bg-dark`,
+                isSending && "loading"
+                ].join(' ')}>
+
                 {editionMode ?
                     <section className={style.edit}>
                         <h1>Welcome back</h1>

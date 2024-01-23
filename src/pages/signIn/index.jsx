@@ -1,10 +1,12 @@
 import style from "./signIn.module.css"
-import MainButton from "../../components/mainButton"
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getUser, getToken } from "../../services/callAPI.service"
+// redux and API
 import { useDispatch } from "react-redux"
 import { postData, postToken } from "../../store/loginSlice"
+import { getUser, getToken } from "../../services/callAPI.service"
+// components
+import MainButton from "../../components/mainButton"
 
 
 /**
@@ -21,38 +23,48 @@ function SignIn() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        // change the title of the page
+        document.title = " Argent Bank - Connection"
+    })
 
-    // add submit conditions before sending
     const handleSumbit = () => {
+        // add submit conditions before sending
+        let isInputsValid = true
         let emailRegExp = new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")
         if (mailInput.current.value.trim() === "" || !emailRegExp.test(mailInput.current.value)) {
-            updateMailInput_error("Veillez entrer un email")
+            updateMailInput_error("Please enter a email")
+            isInputsValid = false
         } else {
             updateMailInput_error(false)
         }
         if (passwordInput.current.value.trim() === "") {
-            updatePasswordInput_error("Veillez entrer un mot de passe")
+            updatePasswordInput_error("Please enter a password")
+            isInputsValid = false
         } else {
             updatePasswordInput_error(false)
         }
-        updateIsSending(true)
+        if (isInputsValid) {
+            updateIsSending(true)
+        }
     }
 
-
-    // try to login and update the store
     useEffect(() => {
+        // try to login and update the store
         if (isSending && user === undefined) {
             const getInformations = async () => {
-                const token = await getToken(
-                    mailInput.current.value.trim(),
-                    passwordInput.current.value,
-                )
-                dispatch(postToken(token))
-                updateUser(await getUser
-                    (
-                        token
+                try {
+                    const token = await getToken(
+                        mailInput.current.value.trim(),
+                        passwordInput.current.value,
                     )
-                )
+                    dispatch(postToken(token))
+                    updateUser(await getUser(token)
+                    )
+                } catch {
+                    updateMailInput_error("bad correspondence between email and password")
+                    updateIsSending(false)
+                }
             }
             getInformations()
         }
@@ -60,12 +72,15 @@ function SignIn() {
             dispatch(postData(user))
             navigate("/user")
         }
-        updateIsSending(false)
     }, [dispatch, isSending, navigate, user])
 
 
     return (
-        <main className={`${style.main} bg-dark`}>
+        <main className={`
+            ${style.main} 
+            bg-dark 
+            ${isSending && "loading"}
+        `}>
             <section className={style.content}>
                 <i className="fa fa-user-circle"></i>
                 <h1>Sign In</h1>
@@ -74,7 +89,7 @@ function SignIn() {
                     <div className={style.input_wrapper}>
                         <label htmlFor="username">Username</label>
                         {mailInput_error !== false &&
-                            <span className={style.inputErrorMessage}>{mailInput_error}</span>                     
+                            <span className={style.inputErrorMessage}>{mailInput_error}</span>
                         }
                         <input
                             type="text"
@@ -85,7 +100,7 @@ function SignIn() {
                     <div className={style.input_wrapper}>
                         <label htmlFor="password">Password</label>
                         {passwordInput_error !== false &&
-                            <span className={style.inputErrorMessage}>{passwordInput_error}</span>                    
+                            <span className={style.inputErrorMessage}>{passwordInput_error}</span>
                         }
                         <input
                             type="password"

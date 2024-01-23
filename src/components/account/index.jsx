@@ -21,7 +21,6 @@ function Account({ title, amount, description }) {
                 <MainButton
                     text="View transactions"
                     navLink={`/transactions/${title}`}
-                    isUnderlined={false}
                     isLittleVersion={false}
                 />
             </div>

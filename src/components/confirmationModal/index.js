@@ -11,6 +11,7 @@ import style from "./confirmationModal.module.css"
 function ConfirmationModale({ text, methodOn, methodOff }) {
 
     const confirmation = () => {
+        // call the confirmed method before closed the modal with the methodOff
         methodOn()
         methodOff()
     }

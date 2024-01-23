@@ -15,7 +15,7 @@ nav a.router-link-exact-active {
 }
 
 .signInContainer {
-    margin-right: 0.5rem;    
+    margin-right: 0.5rem;
     display: flex;
     flex-direction: row;
     gap: 12px;
@@ -24,7 +24,7 @@ nav a.router-link-exact-active {
 .navItem {
     text-decoration: none;
     font-weight: bold;
-    font-size: inherit;    
+    font-size: inherit;
     display: flex;
     align-items: center;
     gap: 5px;

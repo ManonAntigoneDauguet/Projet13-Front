@@ -1,4 +1,6 @@
 import style from "./home.module.css"
+import { useEffect } from "react"
+// assets
 import chatIcon from "../../assets/icon-chat.png"
 import moneyIcon from "../../assets/icon-money.png"
 import securityIcon from "../../assets/icon-security.png"
@@ -37,6 +39,12 @@ const featuresContent = [
  * @returns { HTMLElement }
  */
 function Home() {
+
+  useEffect(() => {
+    // change the title of the page
+    document.title = "Argent Bank - Home Page"
+  })
+
   return (
     <main>
       <section className={style.hero}>

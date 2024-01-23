@@ -8,9 +8,10 @@ import { Link } from 'react-router-dom'
  * @param { String } [navLink="#"] as router path
  * @param { Boolean } [isLittleVersion=false]
  * @param { Function } [method] as function called on click
+ * @param { Strin } [type="button"] as the type of html button
  * @returns { HTMLElement }
  */
-function MainButton({ text, navLink = "#", isLittleVersion = false, method }) {
+function MainButton({ text, navLink = "#", isLittleVersion = false, method, type = "button" }) {
     return (
         <Link
             to={navLink}
@@ -21,6 +22,7 @@ function MainButton({ text, navLink = "#", isLittleVersion = false, method }) {
                     ${style.main}
                 `}
                 onClick={method}
+                type={type}
             >
                 {text}
             </button>
