@@ -1,4 +1,4 @@
-import style from "./signIn.module.css"
+import style from "./login.module.css"
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 // redux and API
@@ -13,7 +13,7 @@ import MainButton from "../../components/mainButton"
  * Return the sign in page
  * @returns { HTMLElement }
  */
-function SignIn() {
+function Login() {
     const mailInput = useRef(null)
     const passwordInput = useRef(null)
     const [mailInput_error, updateMailInput_error] = useState(false)
@@ -70,7 +70,7 @@ function SignIn() {
         }
         else if (user !== undefined) {
             dispatch(postData(user))
-            navigate("/user")
+            navigate("/profile")
         }
     }, [dispatch, isSending, navigate, user])
 
@@ -124,4 +124,4 @@ function SignIn() {
     )
 }
 
-export default SignIn
+export default Login

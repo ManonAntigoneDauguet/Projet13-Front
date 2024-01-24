@@ -18,7 +18,7 @@
     border: solid 2px var(--border-color);
 }
 
-.button_container {
+.buttonContainer {
     display: flex;
     justify-content: center;
     gap: 16px;

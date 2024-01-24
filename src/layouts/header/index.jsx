@@ -40,7 +40,7 @@ function Header() {
                     {
                         state.isConnected ?
                             <React.Fragment>
-                                <Link to="/user" className={style.navItem}>
+                                <Link to="/profile" className={style.navItem}>
                                     <i className="fa fa-user-circle"></i>
                                     {state.user?.firstName}
                                 </Link>
@@ -54,7 +54,7 @@ function Header() {
                                 </button>
                             </React.Fragment>
                             :
-                            <Link to="/sign-in" className={style.navItem}>
+                            <Link to="/login" className={style.navItem}>
                                 <i className="fa fa-user-circle"></i>
                                 Sign In
                             </Link>

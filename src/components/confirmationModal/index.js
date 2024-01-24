@@ -20,7 +20,7 @@ function ConfirmationModale({ text, methodOn, methodOff }) {
         <div className={style.modale_bg}>
             <div className={style.modale}>
                 <p>{text}</p>
-                <div className={style.button_container}>
+                <div className={style.buttonContainer}>
                     <button onClick={confirmation}>Confirmer</button>
                     <button onClick={methodOff}>Retour</button>
                 </div>
