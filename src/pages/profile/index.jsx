@@ -1,4 +1,4 @@
-import style from "./user.module.css"
+import style from "./profile.module.css"
 import data from "../../mockedData/accountsData.json"
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -17,7 +17,7 @@ const accountContent = data.accountsContent
  * Return the user page
  * @returns { HTMLElement }
  */
-function User() {
+function Profile() {
     const firstNameInput = useRef(null)
     const lastNameInput = useRef(null)
     const [editionMode, changeEditionMode] = useState(false)
@@ -30,7 +30,7 @@ function User() {
     useEffect(() => {
         // redirect the disconnected user to the login page
         if (!state.isConnected) {
-            navigate("/sign-in")
+            navigate("/login")
         } else {
             document.title = `Argent Bank - ${state.user?.firstName} ${state.user?.lastName}`
         }
@@ -141,4 +141,4 @@ function User() {
     }
 }
 
-export default User
+export default Profile

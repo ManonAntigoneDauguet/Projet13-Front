@@ -1,4 +1,4 @@
-import style from "./signIn.module.css"
+import style from "./login.module.css"
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 // redux and API
@@ -13,10 +13,10 @@ import MainButton from "../../components/mainButton"
  * Return the sign in page
  * @returns { HTMLElement }
  */
-function SignIn() {
-    const mailInput = useRef(null)
+function Login() {
+    const emailInput = useRef(null)
     const passwordInput = useRef(null)
-    const [mailInput_error, updateMailInput_error] = useState(false)
+    const [emailInput_error, updateEmailInput_error] = useState(false)
     const [passwordInput_error, updatePasswordInput_error] = useState(false)
     const [isSending, updateIsSending] = useState(false)
     const [user, updateUser] = useState()
@@ -28,15 +28,15 @@ function SignIn() {
         document.title = " Argent Bank - Connection"
     })
 
-    const handleSumbit = () => {
+    const handleSubmit = () => {
         // add submit conditions before sending
         let isInputsValid = true
         let emailRegExp = new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")
-        if (mailInput.current.value.trim() === "" || !emailRegExp.test(mailInput.current.value)) {
-            updateMailInput_error("Please enter a email")
+        if (emailInput.current.value.trim() === "" || !emailRegExp.test(emailInput.current.value)) {
+            updateEmailInput_error("Please enter a email")
             isInputsValid = false
         } else {
-            updateMailInput_error(false)
+            updateEmailInput_error(false)
         }
         if (passwordInput.current.value.trim() === "") {
             updatePasswordInput_error("Please enter a password")
@@ -55,14 +55,14 @@ function SignIn() {
             const getInformations = async () => {
                 try {
                     const token = await getToken(
-                        mailInput.current.value.trim(),
+                        emailInput.current.value.trim(),
                         passwordInput.current.value,
                     )
                     dispatch(postToken(token))
                     updateUser(await getUser(token)
                     )
                 } catch {
-                    updateMailInput_error("bad correspondence between email and password")
+                    updateEmailInput_error("bad correspondence between email and password")
                     updateIsSending(false)
                 }
             }
@@ -70,7 +70,7 @@ function SignIn() {
         }
         else if (user !== undefined) {
             dispatch(postData(user))
-            navigate("/user")
+            navigate("/profile")
         }
     }, [dispatch, isSending, navigate, user])
 
@@ -87,14 +87,14 @@ function SignIn() {
 
                 <form>
                     <div className={style.input_wrapper}>
-                        <label htmlFor="username">Username</label>
-                        {mailInput_error !== false &&
-                            <span className={style.inputErrorMessage}>{mailInput_error}</span>
+                        <label htmlFor="email">Email</label>
+                        {emailInput_error !== false &&
+                            <span className={style.inputErrorMessage}>{emailInput_error}</span>
                         }
                         <input
                             type="text"
-                            id="username"
-                            ref={mailInput}
+                            id="email"
+                            ref={emailInput}
                         />
                     </div>
                     <div className={style.input_wrapper}>
@@ -116,7 +116,7 @@ function SignIn() {
                         text="Sign In"
                         isLittleVersion={false}
                         type="submit"
-                        method={handleSumbit}
+                        method={handleSubmit}
                     />
                 </form>
             </section>
@@ -124,4 +124,4 @@ function SignIn() {
     )
 }
 
-export default SignIn
+export default Login

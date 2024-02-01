@@ -12,8 +12,8 @@ import Header from './layouts/header'
 import Footer from './layouts/footer'
 // pages
 import Home from './pages/home'
-import SignIn from './pages/signIn'
-import User from './pages/user'
+import Login from './pages/login'
+import Profile from './pages/profile'
 import Transactions from './pages/transactions'
 
 
@@ -25,8 +25,8 @@ root.render(
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/sign-in" element={<SignIn />}></Route>
-          <Route path="/user" element={<User />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
           <Route path="/transactions/:accountId" element={<Transactions />}></Route>
         </Routes>
         <Footer />

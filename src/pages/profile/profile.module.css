@@ -1,6 +1,8 @@
 .main {
+    box-sizing: border-box;
     padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
+    padding-bottom: 1rem;
+    min-height: 50.6rem;
     flex: 1;
 }
 
@@ -23,7 +25,7 @@
 /***************** EDIT SECTION **************/
 .form {
     display: grid;
-    grid-template-columns: 1fr fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     padding-bottom: 2rem;
     row-gap: 0.7em;
