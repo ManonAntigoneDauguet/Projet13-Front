@@ -15,7 +15,7 @@ function Transactions() {
     useEffect(() => {
         // redirect the disconnected user to the login page
         if (!state.isConnected) {
-            navigate("/sign-in")
+            navigate("/login")
         } else {
             document.title = " Argent Bank - Transactions"
         }

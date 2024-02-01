@@ -1,6 +1,6 @@
 .main {
     padding-top: 3rem;
-    padding-bottom: 11.5rem;
+    height: 47.8rem;
     flex: 1;
 }
 
@@ -12,7 +12,7 @@
     padding: 2rem;
 }
 
-.sign_in_icon {
+.signIn_icon {
     font-size: 5rem;
 }
 
