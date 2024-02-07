@@ -26,7 +26,6 @@ function Profile() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    
     useEffect(() => {
         // redirect the disconnected user to the login page
         if (!state.isConnected) {
@@ -45,12 +44,16 @@ function Profile() {
         // edit the user's informations
         if (isSending) {
             const changeInformations = async () => {
-                const test = await editUser(
-                    state.token,
-                    firstNameInput.current.value.trim(),
-                    lastNameInput.current.value.trim()
-                )
-                dispatch(postData(test))
+                try {
+                    const test = await editUser(
+                        state.token,
+                        firstNameInput.current.value.trim(),
+                        lastNameInput.current.value.trim()
+                    )
+                    dispatch(postData(test))
+                } catch {
+                    console.log('We encounter an error. Please retry later.')
+                }
             }
             changeInformations()
             updateIsSending(false)
@@ -64,7 +67,7 @@ function Profile() {
             <main className={[
                 editionMode ? `${style.main__editMode} bg-light` : `${style.main} bg-dark`,
                 isSending && "loading"
-                ].join(' ')}>
+            ].join(' ')}>
 
                 {editionMode ?
                     <section className={style.edit}>
