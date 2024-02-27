@@ -1,5 +1,7 @@
+const apiUrl = process.env.REACT_APP_API_URL
+
 async function getToken(email, password) {
-    const response = await fetch(`http://localhost:3001/api/v1/user/login`, {
+    const response = await fetch(`${apiUrl}user/login`, {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -13,7 +15,7 @@ async function getToken(email, password) {
 
 async function getUser(token) {
     try {
-        const response = await fetch(`http://localhost:3001/api/v1/user/profile`, {
+        const response = await fetch(`${apiUrl}user/profile`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -29,7 +31,7 @@ async function getUser(token) {
 }
 
 async function editUser(token, firstName, lastName) {
-    const response = await fetch(`http://localhost:3001/api/v1/user/profile`, {
+    const response = await fetch(`${apiUrl}user/profile`, {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json',
